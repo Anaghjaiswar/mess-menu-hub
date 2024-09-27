@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Announcements</title>
+    <link rel="stylesheet" href="announcements.css">
+</head>
+<body>
+    <div class="announcement-container">
+        <h1>Post Announcements</h1>
+
+        <!-- Form for posting new announcements -->
+        <form id="announcementForm">
+            <div class="input-group">
+                <label for="announcementTitle">Announcement Title:</label>
+                <input type="text" id="announcementTitle" placeholder="Enter announcement title" required>
+            </div>
+
+            <div class="input-group">
+                <label for="announcementMessage">Announcement Message:</label>
+                <textarea id="announcementMessage" rows="4" placeholder="Enter the announcement message" required></textarea>
+            </div>
+
+            <div class="input-group">
+                <label for="announcementDate">Date:</label>
+                <input type="date" id="announcementDate" required>
+            </div>
+
+            <button type="submit" class="btn">Post Announcement</button>
+        </form>
+
+        <h2>Current Announcements</h2>
+
+        <!-- Display announcements -->
+        <div id="announcementsDisplay">
+            <!-- Announcements will appear here dynamically -->
+        </div>
+    </div>
+
+    <script>
+        const announcementForm = document.getElementById('announcementForm');
+        const announcementsDisplay = document.getElementById('announcementsDisplay');
+
+        // Add event listener for form submission
+        announcementForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get the form data
+            const title = document.getElementById('announcementTitle').value;
+            const message = document.getElementById('announcementMessage').value;
+            const date = document.getElementById('announcementDate').value;
+
+            // Create a unique ID for the announcement (for easy removal)
+            const announcementId = `announcement-${Date.now()}`;
+
+            // Create a new announcement item with a remove button
+            const newAnnouncement = `
+                <section class="announcement-item" id="${announcementId}">
+                    <h3>${title}</h3>
+                    <p><strong>Date:</strong> ${new Date(date).toLocaleDateString()}</p>
+                    <p>${message}</p>
+                    <button class="remove-btn" onclick="removeAnnouncement('${announcementId}')">Remove</button>
+                </section>
+            `;
+
+            // Add the new announcement to the display section
+            announcementsDisplay.innerHTML += newAnnouncement;
+
+            // Reset the form
+            announcementForm.reset();
+        });
+
+        // Function to remove an announcement
+        function removeAnnouncement(id) {
+            const announcementToRemove = document.getElementById(id);
+            announcementToRemove.remove();
+        }
+    </script>
+</body>
+</html>

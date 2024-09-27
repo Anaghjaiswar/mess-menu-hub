@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Posting</title>
+    <link rel="stylesheet" href="menu_posting.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+        <h1>Post Your Daily Menu</h1>
+        <form id="menuPostingForm">
+            <!-- Meal options selection -->
+            <div class="meal-options input-group">
+                <label><input type="checkbox" id="breakfastCheckbox"> Breakfast</label>
+                <label><input type="checkbox" id="lunchCheckbox"> Lunch</label>
+                <label><input type="checkbox" id="dinnerCheckbox"> Dinner</label>
+            </div>
+
+            <!-- Breakfast section (hidden by default) -->
+            <div id="breakfastSection" class="meal-form" style="display: none;">
+                <h3>Breakfast Menu</h3>
+                <div class="input-group">
+                    <label for="breakfastDish">Dish Name</label>
+                    <input type="text" id="breakfastDish" class="dish-name-input" placeholder="Enter dish name">
+                </div>
+                <div class="input-group">
+                    <label for="breakfastPrice">Price</label>
+                    <input type="number" id="breakfastPrice" class="dish-price-input" placeholder="Enter price">
+                </div>
+                <div class="input-group">
+                    <label for="breakfastDescription">Description</label>
+                    <textarea id="breakfastDescription" class="dish-desc-input"
+                        placeholder="Enter description"></textarea>
+                </div>
+            </div>
+
+            <!-- Lunch section (hidden by default) -->
+            <div id="lunchSection" class="meal-form" style="display: none;">
+                <h3>Lunch Menu</h3>
+                <div class="input-group">
+                    <label for="lunchDish">Dish Name</label>
+                    <input type="text" id="lunchDish" class="dish-name-input" placeholder="Enter dish name">
+                </div>
+                <div class="input-group">
+                    <label for="lunchPrice">Price</label>
+                    <input type="number" id="lunchPrice" class="dish-price-input" placeholder="Enter price">
+                </div>
+                <div class="input-group">
+                    <label for="lunchDescription">Description</label>
+                    <textarea id="lunchDescription" class="dish-desc-input" placeholder="Enter description"></textarea>
+                </div>
+            </div>
+
+            <!-- Dinner section (hidden by default) -->
+            <div id="dinnerSection" class="meal-form" style="display: none;">
+                <h3>Dinner Menu</h3>
+                <div class="input-group">
+                    <label for="dinnerDish">Dish Name</label>
+                    <input type="text" id="dinnerDish" class="dish-name-input" placeholder="Enter dish name">
+                </div>
+                <div class="input-group">
+                    <label for="dinnerPrice">Price</label>
+                    <input type="number" id="dinnerPrice" class="dish-price-input" placeholder="Enter price">
+                </div>
+                <div class="input-group">
+                    <label for="dinnerDescription">Description</label>
+                    <textarea id="dinnerDescription" class="dish-desc-input" placeholder="Enter description"></textarea>
+                </div>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn">Submit Menu</button>
+        </form>
+    </div>
+
+    <script>
+        // Handle checkboxes and display respective sections
+        document.getElementById('breakfastCheckbox').addEventListener('change', function () {
+            document.getElementById('breakfastSection').style.display = this.checked ? 'block' : 'none';
+        });
+
+        document.getElementById('lunchCheckbox').addEventListener('change', function () {
+            document.getElementById('lunchSection').style.display = this.checked ? 'block' : 'none';
+        });
+
+        document.getElementById('dinnerCheckbox').addEventListener('change', function () {
+            document.getElementById('dinnerSection').style.display = this.checked ? 'block' : 'none';
+        });
+
+        // Form validation
+        document.getElementById('menuPostingForm').addEventListener('submit', function (event) {
+            let valid = true;
+            let errorMessage = '';
+
+            const breakfastChecked = document.getElementById('breakfastCheckbox').checked;
+            const lunchChecked = document.getElementById('lunchCheckbox').checked;
+            const dinnerChecked = document.getElementById('dinnerCheckbox').checked;
+
+            // Validate breakfast
+            if (breakfastChecked) {
+                const breakfastDish = document.getElementById('breakfastDish').value.trim();
+                const breakfastPrice = document.getElementById('breakfastPrice').value.trim();
+                const breakfastDesc = document.getElementById('breakfastDescription').value.trim();
+                if (!breakfastDish) {
+                    valid = false;
+                    errorMessage += 'Please enter a dish name for breakfast.\n';
+                }
+                if (!breakfastPrice) {
+                    valid = false;
+                    errorMessage += 'Please enter a price for breakfast.\n';
+                }
+                if (!breakfastDesc) {
+                    valid = false;
+                    errorMessage += 'Please enter a description for breakfast.\n';
+                }
+            }
+
+            // Validate lunch
+            if (lunchChecked) {
+                const lunchDish = document.getElementById('lunchDish').value.trim();
+                const lunchPrice = document.getElementById('lunchPrice').value.trim();
+                const lunchDesc = document.getElementById('lunchDescription').value.trim();
+                if (!lunchDish) {
+                    valid = false;
+                    errorMessage += 'Please enter a dish name for lunch.\n';
+                }
+                if (!lunchPrice) {
+                    valid = false;
+                    errorMessage += 'Please enter a price for lunch.\n';
+                }
+                if (!lunchDesc) {
+                    valid = false;
+                    errorMessage += 'Please enter a description for lunch.\n';
+                }
+            }
+
+            // Validate dinner
+            if (dinnerChecked) {
+                const dinnerDish = document.getElementById('dinnerDish').value.trim();
+                const dinnerPrice = document.getElementById('dinnerPrice').value.trim();
+                const dinnerDesc = document.getElementById('dinnerDescription').value.trim();
+                if (!dinnerDish) {
+                    valid = false;
+                    errorMessage += 'Please enter a dish name for dinner.\n';
+                }
+                if (!dinnerPrice) {
+                    valid = false;
+                    errorMessage += 'Please enter a price for dinner.\n';
+                }
+                if (!dinnerDesc) {
+                    valid = false;
+                    errorMessage += 'Please enter a description for dinner.\n';
+                }
+            }
+
+            // Validate that at least one meal is selected
+            if (!breakfastChecked && !lunchChecked && !dinnerChecked) {
+                valid = false;
+                errorMessage += 'Please select at least one meal option (Breakfast, Lunch, or Dinner).\n';
+            }
+
+            if (!valid) {
+                event.preventDefault();
+                alert(errorMessage);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

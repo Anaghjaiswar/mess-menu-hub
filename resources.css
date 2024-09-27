@@ -1,0 +1,30 @@
+.additional-resources {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ffffff; /* White background for contrast */
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.additional-resources h2 {
+    color: #333;
+}
+
+.additional-resources ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.additional-resources li {
+    margin: 10px 0;
+}
+
+.additional-resources a {
+    text-decoration: none;
+    color: #007bff; /* Link color */
+    font-weight: bold;
+}
+
+.additional-resources a:hover {
+    text-decoration: underline; /* Underline on hover for links */
+}

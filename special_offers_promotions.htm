@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Offers & Promotions</title>
+    <link rel="stylesheet" href="special_offers_promotions.css"> <!-- Link to your CSS -->
+</head>
+<body>
+    <div class="offers-container">
+        <h1>Special Offers & Promotions</h1>
+        
+        <!-- Section to add a new offer -->
+        <div class="add-offer">
+            <h2>Add New Offer</h2>
+            <form id="offerForm">
+                <div class="input-group">
+                    <label for="offerTitle">Offer Title:</label>
+                    <input type="text" id="offerTitle" placeholder="Enter offer title" required>
+                </div>
+                <div class="input-group">
+                    <label for="offerDetails">Offer Details:</label>
+                    <textarea id="offerDetails" placeholder="Describe the offer" rows="4" required></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="offerExpiry">Expiry Date:</label>
+                    <input type="date" id="offerExpiry" required>
+                </div>
+                <button type="submit" class="btn">Add Offer</button>
+            </form>
+        </div>
+
+        <!-- Section to display existing offers -->
+        <div class="current-offers">
+            <h2>Current Offers</h2>
+            <ul id="offersList">
+                <!-- Offers will be dynamically added here -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const offerForm = document.getElementById('offerForm');
+        const offersList = document.getElementById('offersList');
+
+        // Sample offers array to hold the offers
+        let offers = [];
+
+        // Function to add offer
+        offerForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const offerTitle = document.getElementById('offerTitle').value;
+            const offerDetails = document.getElementById('offerDetails').value;
+            const offerExpiry = document.getElementById('offerExpiry').value;
+
+            const newOffer = {
+                title: offerTitle,
+                details: offerDetails,
+                expiry: offerExpiry
+            };
+
+            offers.push(newOffer);
+            displayOffers();
+
+            // Clear form
+            offerForm.reset();
+        });
+
+        // Function to display offers
+        function displayOffers() {
+            offersList.innerHTML = '';
+            offers.forEach((offer, index) => {
+                const offerItem = document.createElement('li');
+                offerItem.innerHTML = `<strong>${offer.title}</strong> - ${offer.details} (Expires on: ${offer.expiry}) <button onclick="removeOffer(${index})" class="remove-btn">Remove</button>`;
+                offersList.appendChild(offerItem);
+            });
+        }
+
+        // Function to remove offer
+        function removeOffer(index) {
+            offers.splice(index, 1);
+            displayOffers();
+        }
+    </script>
+</body>
+</html>

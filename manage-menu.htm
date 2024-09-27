@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Your Menu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="manage-menu.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <h1>Manage Your Daily Menu</h1>
+        <div class="menu-list">
+            <!-- Example for a breakfast menu item -->
+            <div class="menu-item">
+                <h3>Breakfast</h3>
+                <p>Dish Name: Pancakes</p>
+                <p>Price: $5.00</p>
+                <p>Description: Fluffy pancakes with syrup.</p>
+                <button class="btn" onclick="editMenu('breakfast')">Edit</button>
+                <button class="btn delete-btn" onclick="deleteMenu('breakfast')">Delete</button>
+            </div>
+
+            <!-- Example for a lunch menu item -->
+            <div class="menu-item">
+                <h3>Lunch</h3>
+                <p>Dish Name: Grilled Chicken</p>
+                <p>Price: $10.00</p>
+                <p>Description: Grilled chicken served with vegetables.</p>
+                <button class="btn" onclick="editMenu('lunch')">Edit</button>
+                <button class="btn delete-btn" onclick="deleteMenu('lunch')">Delete</button>
+            </div>
+
+            <!-- Example for a dinner menu item -->
+            <div class="menu-item">
+                <h3>Dinner</h3>
+                <p>Dish Name: Pasta</p>
+                <p>Price: $8.00</p>
+                <p>Description: Creamy garlic pasta with herbs.</p>
+                <button class="btn" onclick="editMenu('dinner')">Edit</button>
+                <button class="btn delete-btn" onclick="deleteMenu('dinner')">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function editMenu(mealType) {
+            // Redirect to the post-menu page and pass the meal type (breakfast, lunch, dinner)
+            location.href = `menu_posting.htm?mealType=${mealType}`;
+        }
+
+        function deleteMenu(mealType) {
+            if (confirm(`Are you sure you want to delete the ${mealType} menu?`)) {
+                // Implement the deletion logic here (e.g., remove from database)
+                alert(`${mealType.charAt(0).toUpperCase() + mealType.slice(1)} menu item has been deleted.`);
+                // Refresh or update the menu list after deletion
+            }
+        }
+    </script>
+</body>
+
+</html>

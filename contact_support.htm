@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Support</title>
+    <link rel="stylesheet" href="contact_support.css">
+</head>
+<body>
+    <div class="support-container">
+        <h1>Contact Support</h1>
+
+        <p>If you have any questions, issues, or need assistance with your account, feel free to reach out to our support team using the form below.</p>
+
+        <form id="supportForm">
+            <div class="input-group">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
+            </div>
+
+            <div class="input-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" placeholder="Enter your email address" required>
+            </div>
+
+            <div class="input-group">
+                <label for="issueType">Issue Type:</label>
+                <select id="issueType" required>
+                    <option value="" disabled selected>Select the issue type</option>
+                    <option value="technical">Technical Issue</option>
+                    <option value="billing">Billing Inquiry</option>
+                    <option value="feedback">General Feedback</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="message">Your Message:</label>
+                <textarea id="message" rows="5" placeholder="Describe your issue or inquiry" required></textarea>
+            </div>
+
+            <button type="submit" class="btn">Submit Request</button>
+        </form>
+
+        <div class="contact-details">
+            <h2>Other Ways to Contact Us</h2>
+            <p>You can also reach us at:</p>
+            <ul>
+                <li>Email: support@MessMenuHub.com</li>
+                <li>Phone: +91 8077045850</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const supportForm = document.getElementById('supportForm');
+
+        supportForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert("Your request has been submitted. Our support team will contact you shortly.");
+            supportForm.reset();
+        });
+    </script>
+</body>
+</html>
