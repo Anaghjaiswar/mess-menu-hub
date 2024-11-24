@@ -5,75 +5,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu Posting</title>
-    <link rel="stylesheet" href="menu_posting.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .dashboard-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-container h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .meal-form {
+            margin-bottom: 20px;
+        }
+
+        .meal-options label {
+            margin-right: 15px;
+        }
+
+        .input-group label {
+            font-weight: bold;
+        }
+
+        .btn {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 
 <body>
 
     <div class="dashboard-container">
-        <h1>Post Your Daily Menu</h1>
+        <h1 class="text-primary">Post Your Daily Menu</h1>
         <form id="menuPostingForm">
             <!-- Meal options selection -->
-            <div class="meal-options input-group">
-                <label><input type="checkbox" id="breakfastCheckbox"> Breakfast</label>
-                <label><input type="checkbox" id="lunchCheckbox"> Lunch</label>
-                <label><input type="checkbox" id="dinnerCheckbox"> Dinner</label>
+            <div class="meal-options mb-3">
+                <label><input type="checkbox" id="breakfastCheckbox" class="form-check-input"> Breakfast</label>
+                <label><input type="checkbox" id="lunchCheckbox" class="form-check-input"> Lunch</label>
+                <label><input type="checkbox" id="dinnerCheckbox" class="form-check-input"> Dinner</label>
             </div>
 
             <!-- Breakfast section (hidden by default) -->
             <div id="breakfastSection" class="meal-form" style="display: none;">
                 <h3>Breakfast Menu</h3>
-                <div class="input-group">
-                    <label for="breakfastDish">Dish Name</label>
-                    <input type="text" id="breakfastDish" class="dish-name-input" placeholder="Enter dish name">
+                <div class="mb-3">
+                    <label for="breakfastDish" class="form-label">Dish Name</label>
+                    <input type="text" id="breakfastDish" class="form-control" placeholder="Enter dish name">
                 </div>
-                <div class="input-group">
-                    <label for="breakfastPrice">Price</label>
-                    <input type="number" id="breakfastPrice" class="dish-price-input" placeholder="Enter price">
+                <div class="mb-3">
+                    <label for="breakfastPrice" class="form-label">Price</label>
+                    <input type="number" id="breakfastPrice" class="form-control" placeholder="Enter price">
                 </div>
-                <div class="input-group">
-                    <label for="breakfastDescription">Description</label>
-                    <textarea id="breakfastDescription" class="dish-desc-input"
-                        placeholder="Enter description"></textarea>
+                <div class="mb-3">
+                    <label for="breakfastDescription" class="form-label">Description</label>
+                    <textarea id="breakfastDescription" class="form-control" placeholder="Enter description"></textarea>
                 </div>
             </div>
 
             <!-- Lunch section (hidden by default) -->
             <div id="lunchSection" class="meal-form" style="display: none;">
                 <h3>Lunch Menu</h3>
-                <div class="input-group">
-                    <label for="lunchDish">Dish Name</label>
-                    <input type="text" id="lunchDish" class="dish-name-input" placeholder="Enter dish name">
+                <div class="mb-3">
+                    <label for="lunchDish" class="form-label">Dish Name</label>
+                    <input type="text" id="lunchDish" class="form-control" placeholder="Enter dish name">
                 </div>
-                <div class="input-group">
-                    <label for="lunchPrice">Price</label>
-                    <input type="number" id="lunchPrice" class="dish-price-input" placeholder="Enter price">
+                <div class="mb-3">
+                    <label for="lunchPrice" class="form-label">Price</label>
+                    <input type="number" id="lunchPrice" class="form-control" placeholder="Enter price">
                 </div>
-                <div class="input-group">
-                    <label for="lunchDescription">Description</label>
-                    <textarea id="lunchDescription" class="dish-desc-input" placeholder="Enter description"></textarea>
+                <div class="mb-3">
+                    <label for="lunchDescription" class="form-label">Description</label>
+                    <textarea id="lunchDescription" class="form-control" placeholder="Enter description"></textarea>
                 </div>
             </div>
 
             <!-- Dinner section (hidden by default) -->
             <div id="dinnerSection" class="meal-form" style="display: none;">
                 <h3>Dinner Menu</h3>
-                <div class="input-group">
-                    <label for="dinnerDish">Dish Name</label>
-                    <input type="text" id="dinnerDish" class="dish-name-input" placeholder="Enter dish name">
+                <div class="mb-3">
+                    <label for="dinnerDish" class="form-label">Dish Name</label>
+                    <input type="text" id="dinnerDish" class="form-control" placeholder="Enter dish name">
                 </div>
-                <div class="input-group">
-                    <label for="dinnerPrice">Price</label>
-                    <input type="number" id="dinnerPrice" class="dish-price-input" placeholder="Enter price">
+                <div class="mb-3">
+                    <label for="dinnerPrice" class="form-label">Price</label>
+                    <input type="number" id="dinnerPrice" class="form-control" placeholder="Enter price">
                 </div>
-                <div class="input-group">
-                    <label for="dinnerDescription">Description</label>
-                    <textarea id="dinnerDescription" class="dish-desc-input" placeholder="Enter description"></textarea>
+                <div class="mb-3">
+                    <label for="dinnerDescription" class="form-label">Description</label>
+                    <textarea id="dinnerDescription" class="form-control" placeholder="Enter description"></textarea>
                 </div>
             </div>
 
             <!-- Submit button -->
-            <button type="submit" class="btn">Submit Menu</button>
+            <button type="submit" class="btn btn-primary">Submit Menu</button>
         </form>
     </div>
 
